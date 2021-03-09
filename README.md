@@ -1,4 +1,4 @@
-# Repository for the MaseOS kernel
+# Repository for the maseOS kernel
 
 ### Still being updated.
 
