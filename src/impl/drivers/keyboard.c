@@ -3,6 +3,7 @@
 #include "ports.h"
 #include "../cpu/isr.h"
 #include "display.h"
+#include "print.h"
 
 #define BACKSPACE 0x0E
 #define ENTER 0x1C
@@ -38,11 +39,14 @@ static void keyboard_callback(registers_t *regs) {
         char letter = sc_ascii[(int) scancode];
         append(key_buffer, letter);
         char str[2] = {letter, '\0'};
-        print_string(str);
+        printStr(str);
     }
 }
 
 void init_keyboard() {
     register_interrupt_handler(IRQ1, keyboard_callback);
+    printSetColor(PRINT_LIGHT_GREEN, PRINT_BLACK);
+    printStr("Initializing... \n");
+
 }
 

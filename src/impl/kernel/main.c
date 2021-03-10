@@ -20,9 +20,9 @@ void kernelMain()
     printStr("\nAlpha Build\n");
     printSetColor(PRINT_LIGHT_BLUE, PRINT_BLACK);
     printStr("\nInstalling interrupt service routines (ISRs)...\n\n");
-    //isr_install();
+    isr_install();
     printStr("Initializing keyboard (IRQ 1)...\n\n");
-    //init_keyboard();
+    init_keyboard();
     printSetColor(PRINT_GREEN, PRINT_BLACK);
     printStr("s) to open shell\n");
     printStr("r) to reboot");
