@@ -1,5 +1,6 @@
 global start
 extern long_mode_start
+extern kernelMain
 
 section .text
 bits 32
@@ -12,12 +13,12 @@ start:
     call enable_paging
     lgdt [gdt64.pointer]
     jmp gdt64.code_segment:long_mode_start
-    hlt
 
 check_multiboot:
     cmp eax, 0x36d76289
     jne .no_multiboot
     ret
+
 .no_multiboot:
     mov al, "M"
     jmp error
@@ -64,6 +65,7 @@ setup_page_tables:
     or eax, 0b11
     mov [page_tabe_l3], eax
     mov ecx, 0
+    
 .loop:
     mov eax, 0x200000
     mul ecx
